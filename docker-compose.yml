@@ -1,0 +1,19 @@
+version: '3'
+services:
+    web:
+        build: ./web
+        ports: 
+            - 3000 
+
+    api:
+        build: ./api
+        ports: 
+            - 3000
+
+    proxy:
+        build: ./proxy
+        links:
+            - web:web
+            - api:api
+        ports:
+            - 80:80
